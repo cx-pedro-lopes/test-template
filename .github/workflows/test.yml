@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Export envs from block
-        if: github.event.inputs.env_block != ''
         run: |
           echo "${{ inputs.env_block }}" >> $GITHUB_ENV
       - run: |
