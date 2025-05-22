@@ -1,0 +1,18 @@
+on:
+  workflow_call:
+    inputs:
+      env_block:
+        type: string
+        required: false
+        default: ''
+ 
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Export envs from block
+        if: github.event.inputs.env_block != ''
+        run: |
+          echo "${{ inputs.env_block }}" >> $GITHUB_ENV
+      - run: |
+          echo "TEST is $TEST"
